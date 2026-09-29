@@ -245,8 +245,6 @@ header { display: flex; justify-content: space-between; align-items: center; pad
     header { padding: 1rem 0 5vh; flex-direction: column; gap: 1rem; align-items: flex-start; }
     
     /* Typography */
-    .monolith { font-size: clamp(4rem, 15vw, 6rem); letter-spacing: 2px; }
-    .monolith:hover + .hover-reveal { letter-spacing: 2px; }
     .manifesto { font-size: 0.8rem; letter-spacing: 2px; }
     
     /* Grids & Cards */
@@ -263,15 +261,11 @@ header { display: flex; justify-content: space-between; align-items: center; pad
     .crt-video-frame { border-width: 1px; }
     
     /* Vector Footer */
-    #vector-footer { padding: 4rem 1.5rem; }
-    .vector-grid { flex-direction: column; gap: 3rem; align-items: center; }
-    .vector-item { min-width: 100%; }
-    .crt-svg { width: 80px; height: 80px; }
-    .vector-label { font-size: 1.2rem; margin-top: 1rem; }
-}
-
-@media (max-width: 480px) {
-    .monolith { font-size: clamp(3rem, 12vw, 4rem); }
+    #vector-footer { padding: 4rem 1rem; }
+    .vector-grid { flex-direction: row; gap: 1rem; align-items: center; justify-content: space-between; }
+    .vector-item { min-width: unset; flex: 1; }
+    .crt-svg { width: 45px; height: 45px; }
+    .vector-label { font-size: 0.7rem; margin-top: 0.5rem; letter-spacing: 1px; }
 }
 
 /* Fix cursor for touch devices */
