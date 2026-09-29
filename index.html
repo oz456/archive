@@ -38,25 +38,29 @@
         </section>
 
         <section id="systems" class="informative-section">
-            <div class="section-header reveal" style="display: flex; justify-content: space-between; align-items: center;">
+            <div class="section-header reveal">
                 <h2>[ 01. CORE_SYSTEMS ]</h2>
-                <div class="hardware-controls">
-                    <span onclick="scrollCore(-1)">[ &lt; ]</span>
-                    <span onclick="scrollCore(1)">[ &gt; ]</span>
-                </div>
             </div>
-            <div class="info-grid" id="core-grid">
-                <div class="info-card reveal delay-1">
-                    <h3>MECHANICS</h3>
-                    <p>Physical linkages and precision topography. The violent kinetic transfer of power.</p>
+            
+            <div class="systems-terminal reveal delay-1">
+                <div class="terminal-tabs">
+                    <div class="tab active" onclick="switchTab(event, 'mechanics')">MECHANICS</div>
+                    <div class="tab" onclick="switchTab(event, 'electronics')">ELECTRONICS</div>
+                    <div class="tab" onclick="switchTab(event, 'software')">SOFTWARE</div>
                 </div>
-                <div class="info-card reveal delay-2">
-                    <h3>ELECTRONICS</h3>
-                    <p>Embedded architecture and PCB design. The central nervous system of the machine.</p>
-                </div>
-                <div class="info-card reveal delay-3">
-                    <h3>SOFTWARE</h3>
-                    <p>C, C++, and bare-metal logic. Writing the rules that bend silicon to will.</p>
+                <div class="terminal-content">
+                    <div id="tab-mechanics" class="tab-pane active">
+                        <h3>[ KINETICS ]</h3>
+                        <p>Physical linkages and precision topography. The violent kinetic transfer of power.</p>
+                    </div>
+                    <div id="tab-electronics" class="tab-pane">
+                        <h3>[ EMBEDDED ]</h3>
+                        <p>Embedded architecture and PCB design. The central nervous system of the machine.</p>
+                    </div>
+                    <div id="tab-software" class="tab-pane">
+                        <h3>[ LOGIC ]</h3>
+                        <p>C, C++, and bare-metal logic. Writing the rules that bend silicon to will.</p>
+                    </div>
                 </div>
             </div>
         </section>

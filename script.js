@@ -216,12 +216,11 @@ function triggerVibration(event) {
     }, 800);
 }
 
-// Hardware Scroller Logic
-function scrollCore(direction) {
-    const grid = document.getElementById('core-grid');
-    if (!grid) return;
+// Systems Terminal Tabs Logic
+function switchTab(event, tabId) {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
     
-    // Width of one card + gap
-    const scrollAmount = 300 + 32; 
-    grid.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+    event.target.classList.add('active');
+    document.getElementById('tab-' + tabId).classList.add('active');
 }
