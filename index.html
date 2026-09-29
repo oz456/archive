@@ -99,114 +99,23 @@
         </div>
     </div>
 
-    <!-- Massive NTLAP Workspace Footer -->
-    <footer id="workspace-footer" class="reveal">
-        <!-- Background TV Noise -->
+    <!-- Minimal Industrial Void Footer -->
+    <footer id="minimal-footer" class="reveal">
+        <!-- Subtle TV Noise Void -->
         <canvas id="footer-noise"></canvas>
         
-        <div class="footer-wrapper">
-            <div class="footer-header">
-                <h2 class="glitch-text" data-text="WORKSPACE_INVENTORY">WORKSPACE_INVENTORY</h2>
+        <!-- The Spec Plate -->
+        <div class="spec-plate">
+            <div class="spec-left">
+                <span class="spec-accent">MK_01</span> // ARCHIVE
+            </div>
+            <div class="spec-center">
                 <div class="status-indicator">
                     <div class="recording-dot"></div>
-                    <span>TOOLS CALIBRATED // READY</span>
                 </div>
             </div>
-
-            <div class="equipment-grid">
-                <!-- Calipers -->
-                <div class="equip-item reveal delay-1">
-                    <div class="equip-visual">
-                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                            <!-- Ruler body -->
-                            <rect x="20" y="45" width="70" height="10" fill="none" stroke="currentColor" stroke-width="2"/>
-                            <!-- Fixed jaw -->
-                            <path d="M20,45 L20,20 L30,20 L30,45" fill="none" stroke="currentColor" stroke-width="2"/>
-                            <!-- Sliding jaw -->
-                            <path d="M50,45 L50,20 L60,20 L60,45" fill="none" stroke="var(--accent)" stroke-width="2"/>
-                            <!-- Tick marks -->
-                            <line x1="40" y1="45" x2="40" y2="48" stroke="currentColor" stroke-width="1"/>
-                            <line x1="70" y1="45" x2="70" y2="48" stroke="currentColor" stroke-width="1"/>
-                            <line x1="80" y1="45" x2="80" y2="48" stroke="currentColor" stroke-width="1"/>
-                        </svg>
-                        <div class="equip-scan"></div>
-                    </div>
-                    <div class="equip-info">
-                        <h4>VERNIER CALIPERS</h4>
-                        <span>[ PRECISION: 0.02mm ]</span>
-                        <p>Dimensional analysis and absolute mechanical tolerances.</p>
-                    </div>
-                </div>
-
-                <!-- 3D Printer -->
-                <div class="equip-item reveal delay-2">
-                    <div class="equip-visual">
-                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                            <!-- Frame -->
-                            <rect x="20" y="20" width="60" height="60" fill="none" stroke="currentColor" stroke-width="2"/>
-                            <!-- Print Bed -->
-                            <path d="M25,75 L75,75 L65,65 L35,65 Z" fill="rgba(255,0,60,0.1)" stroke="currentColor" stroke-width="2"/>
-                            <!-- Extruder -->
-                            <rect x="45" y="30" width="10" height="15" fill="none" stroke="var(--accent)" stroke-width="2"/>
-                            <!-- Filament line -->
-                            <line x1="50" y1="45" x2="50" y2="65" stroke="var(--accent)" stroke-width="1" stroke-dasharray="2 2"/>
-                        </svg>
-                        <div class="equip-scan"></div>
-                    </div>
-                    <div class="equip-info">
-                        <h4>3D PRINTER (FDM)</h4>
-                        <span>[ STATUS: EXTRUDING ]</span>
-                        <p>Rapid architectural prototyping and structural polymers.</p>
-                    </div>
-                </div>
-
-                <!-- Oscilloscope -->
-                <div class="equip-item reveal delay-3">
-                    <div class="equip-visual">
-                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                            <!-- Screen -->
-                            <rect x="15" y="25" width="70" height="50" rx="5" fill="none" stroke="currentColor" stroke-width="2"/>
-                            <!-- Sine Wave -->
-                            <path d="M15,50 Q25,25 35,50 T65,50 T85,50" fill="none" stroke="var(--accent)" stroke-width="2"/>
-                            <!-- Grid -->
-                            <line x1="15" y1="37.5" x2="85" y2="37.5" stroke="currentColor" stroke-width="0.5" opacity="0.3"/>
-                            <line x1="15" y1="62.5" x2="85" y2="62.5" stroke="currentColor" stroke-width="0.5" opacity="0.3"/>
-                            <line x1="38" y1="25" x2="38" y2="75" stroke="currentColor" stroke-width="0.5" opacity="0.3"/>
-                            <line x1="61" y1="25" x2="61" y2="75" stroke="currentColor" stroke-width="0.5" opacity="0.3"/>
-                        </svg>
-                        <div class="equip-scan"></div>
-                    </div>
-                    <div class="equip-info">
-                        <h4>OSCILLOSCOPE</h4>
-                        <span>[ FREQ: 100 MHz ]</span>
-                        <p>Signal verification, logic debugging, and voltage tracking.</p>
-                    </div>
-                </div>
-
-                <!-- Soldering Station -->
-                <div class="equip-item reveal delay-1">
-                    <div class="equip-visual">
-                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                            <!-- Iron -->
-                            <line x1="80" y1="20" x2="40" y2="60" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
-                            <line x1="40" y1="60" x2="30" y2="70" stroke="currentColor" stroke-width="2"/>
-                            <!-- Solder Joint / Tip Glow -->
-                            <circle cx="28" cy="72" r="4" fill="var(--accent)"/>
-                            <!-- Smoke Wisp -->
-                            <path d="M28,60 Q15,40 35,20 T25,5" fill="none" stroke="var(--accent)" stroke-width="1" stroke-dasharray="3 3"/>
-                        </svg>
-                        <div class="equip-scan"></div>
-                    </div>
-                    <div class="equip-info">
-                        <h4>SOLDERING STATION</h4>
-                        <span>[ TEMP: 350°C ]</span>
-                        <p>SMD component assembly and bare-metal electronic fusion.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="footer-end">
-                <span class="glitch-text" data-text="END_OF_TRANSMISSION">END_OF_TRANSMISSION</span>
+            <div class="spec-right">
+                [ END_OF_FILE ]
             </div>
         </div>
     </footer>

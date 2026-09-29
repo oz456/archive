@@ -137,48 +137,22 @@ header { display: flex; justify-content: space-between; align-items: center; pad
 .crt-video-frame video { width: 100%; height: auto; max-height: 80vh; display: block; filter: contrast(1.1) brightness(1.1); }
 .modal-scanlines { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06)); background-size: 100% 3px, 3px 100%; pointer-events: none; opacity: 0.5; }
 
-/* Workspace Footer (Massive Inventory Grid) */
-#workspace-footer {
-    position: relative; width: 100%; min-height: 100vh; background-color: #000; 
-    overflow: hidden; border-top: 1px dashed rgba(255,255,255,0.1); margin-top: 6rem;
-    padding: 6rem 2rem; display: flex; align-items: center; justify-content: center;
+/* Minimal Industrial Void Footer */
+#minimal-footer {
+    position: relative; width: 100%; height: 50vh; min-height: 300px; background-color: #000; 
+    overflow: hidden; margin-top: 6rem; display: flex; flex-direction: column; justify-content: flex-end;
 }
-#footer-noise { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; opacity: 0.8; mix-blend-mode: screen; filter: blur(1px); }
+#footer-noise { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; opacity: 0.6; mix-blend-mode: screen; filter: blur(2px); }
 
-.footer-wrapper { position: relative; z-index: 10; width: 100%; max-width: 1200px; }
-.footer-header { display: flex; flex-direction: column; align-items: flex-start; margin-bottom: 4rem; }
-.footer-header h2 { font-family: 'Koulen', display; font-size: clamp(3rem, 8vw, 6rem); line-height: 0.9; letter-spacing: 4px; color: var(--text-bright); text-shadow: 0 0 20px rgba(255,255,255,0.1), 2px 2px 0px rgba(255,0,0,0.5), -2px -2px 0px rgba(0,255,255,0.5); }
-.blinking-status { font-family: 'Roboto Mono', monospace; font-size: 0.8rem; letter-spacing: 4px; color: var(--accent); margin-top: 1rem; animation: rec-blink 2s infinite; }
-
-.equipment-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-bottom: 6rem;
+.spec-plate {
+    position: relative; z-index: 10; display: flex; justify-content: space-between; align-items: center;
+    padding: 1.5rem 2rem; border-top: 1px dashed rgba(255,255,255,0.1);
+    font-family: 'Roboto Mono', monospace; font-size: 0.75rem; color: var(--text-muted); letter-spacing: 4px;
+    background: rgba(0,0,0,0.8); backdrop-filter: blur(10px);
 }
-.equip-item {
-    background: rgba(10,10,10,0.6); border: 1px solid rgba(255,255,255,0.05); padding: 2rem;
-    backdrop-filter: blur(10px); transition: transform 0.3s, border-color 0.3s, background 0.3s;
-    cursor: none;
-}
-.equip-item:hover { transform: translateY(-5px); border-color: var(--accent); background: rgba(255,0,60,0.02); }
-.equip-visual {
-    width: 100%; aspect-ratio: 1; background: #020202; border: 1px solid rgba(255,255,255,0.05);
-    margin-bottom: 1.5rem; position: relative; display: flex; align-items: center; justify-content: center;
-    overflow: hidden;
-}
-.equip-visual svg { width: 60%; height: 60%; color: var(--text-muted); transition: color 0.3s, filter 0.3s; filter: drop-shadow(0 0 0 rgba(255,0,60,0)); }
-.equip-item:hover .equip-visual svg { color: var(--text-bright); filter: drop-shadow(0 0 10px rgba(255,0,60,0.5)); }
-
-.equip-scan {
-    position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: var(--accent);
-    opacity: 0; box-shadow: 0 0 10px var(--accent); animation: scan 2s infinite linear;
-}
-.equip-item:hover .equip-scan { opacity: 0.5; }
-
-.equip-info h4 { font-family: 'Unbounded', sans-serif; font-size: 1.1rem; letter-spacing: 2px; color: var(--text-bright); margin-bottom: 0.5rem; font-weight: 700; }
-.equip-info span { font-family: 'Roboto Mono', monospace; font-size: 0.7rem; color: var(--accent); letter-spacing: 2px; display: block; margin-bottom: 1rem; }
-.equip-info p { font-size: 0.85rem; line-height: 1.6; color: var(--text-muted); }
-
-.footer-end { text-align: center; margin-top: 4rem; border-top: 1px dashed rgba(255,255,255,0.1); padding-top: 2rem; }
-.footer-end span { font-family: 'Roboto Mono', monospace; font-size: 0.7rem; letter-spacing: 10px; color: var(--text-muted); }
+.spec-plate span { display: inline-block; }
+.spec-plate .spec-accent { color: var(--text-bright); font-weight: 700; font-family: 'Unbounded', sans-serif; }
+.spec-center .status-indicator { margin: 0; }
 
 /* Animations */
 .reveal { opacity: 0; transform: translateY(20px); filter: blur(5px); transition: opacity 0.8s ease, transform 0.8s ease, filter 0.8s ease; }
