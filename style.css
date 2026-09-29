@@ -137,22 +137,18 @@ header { display: flex; justify-content: space-between; align-items: center; pad
 .crt-video-frame video { width: 100%; height: auto; max-height: 80vh; display: block; filter: contrast(1.1) brightness(1.1); }
 .modal-scanlines { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06)); background-size: 100% 3px, 3px 100%; pointer-events: none; opacity: 0.5; }
 
-/* Minimal Industrial Void Footer */
-#minimal-footer {
-    position: relative; width: 100%; height: 50vh; min-height: 300px; background-color: #000; 
-    overflow: hidden; margin-top: 6rem; display: flex; flex-direction: column; justify-content: flex-end;
+/* The 0.000001% Zen Garden Footer */
+#zen-garden {
+    position: relative; width: 100%; height: 50vh; min-height: 400px; 
+    background: transparent; overflow: hidden; margin-top: 4rem;
+    display: flex; align-items: center; justify-content: center;
 }
-#footer-noise { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; opacity: 0.6; mix-blend-mode: screen; filter: blur(2px); }
-
-.spec-plate {
-    position: relative; z-index: 10; display: flex; justify-content: space-between; align-items: center;
-    padding: 1.5rem 2rem; border-top: 1px dashed rgba(255,255,255,0.1);
-    font-family: 'Roboto Mono', monospace; font-size: 0.75rem; color: var(--text-muted); letter-spacing: 4px;
-    background: rgba(0,0,0,0.8); backdrop-filter: blur(10px);
+#zen-garden::after {
+    content: 'END_OF_RECORD'; position: absolute; bottom: 3rem;
+    font-family: 'Roboto Mono', monospace; font-size: 0.7rem; color: var(--text-muted);
+    letter-spacing: 12px; pointer-events: none; opacity: 0.2;
 }
-.spec-plate span { display: inline-block; }
-.spec-plate .spec-accent { color: var(--text-bright); font-weight: 700; font-family: 'Unbounded', sans-serif; }
-.spec-center .status-indicator { margin: 0; }
+#zen-garden canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 2; }
 
 /* Animations */
 .reveal { opacity: 0; transform: translateY(20px); filter: blur(5px); transition: opacity 0.8s ease, transform 0.8s ease, filter 0.8s ease; }
