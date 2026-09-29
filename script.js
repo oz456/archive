@@ -13,39 +13,21 @@ function initBootSequence() {
 
     // Prevent scrolling during boot
     document.body.style.overflow = 'hidden';
-
-    const lines = [
-        "SYS.INIT(MK_01);",
-        "> MOUNTING KERNEL...",
-        "> CALIBRATING V-TRACKING...",
-        "> ESTABLISHING NEURAL LINK...",
-        "ACCESS GRANTED."
-    ];
-
-    let delay = 300; // Initial delay
     
-    // Create cursor
-    bootText.innerHTML = '<span id="boot-cursor">_</span>';
+    // Simplest loader: A quick system ping
+    bootText.innerHTML = 'MK_01<span id="boot-cursor">_</span>';
     const cursor = document.getElementById('boot-cursor');
     
     // Blink cursor
-    setInterval(() => cursor.style.opacity = cursor.style.opacity == 0 ? 1 : 0, 300);
+    const blinkInterval = setInterval(() => cursor.style.opacity = cursor.style.opacity == 0 ? 1 : 0, 200);
 
-    lines.forEach((line) => {
-        setTimeout(() => {
-            const span = document.createElement('div');
-            span.textContent = line;
-            bootText.insertBefore(span, cursor);
-        }, delay);
-        delay += 300 + Math.random() * 400; // Randomize typing delay slightly
-    });
-
-    // Flash and reveal site
+    // Flash and reveal site after a very short delay
     setTimeout(() => {
+        clearInterval(blinkInterval);
         bootScreen.classList.add('crt-off');
         document.body.style.overflow = '';
         setTimeout(() => bootScreen.remove(), 500); // Remove from DOM after flash
-    }, delay + 600);
+    }, 800);
 }
 
 // Custom Cursor Logic
