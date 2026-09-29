@@ -179,3 +179,39 @@ function initTVNoise(canvasId, intensity = 0.2) {
 }
 
 
+
+// =========================================================================
+// VECTOR FOOTER INTERACTIONS
+// =========================================================================
+
+function triggerEnergy() {
+    if (document.body.classList.contains('surge-active')) return;
+    document.body.classList.add('surge-active');
+    setTimeout(() => document.body.classList.remove('surge-active'), 500);
+}
+
+function triggerFrequency() {
+    if (document.body.classList.contains('sweep-active')) return;
+    document.body.classList.add('sweep-active');
+    setTimeout(() => document.body.classList.remove('sweep-active'), 1100);
+}
+
+function triggerVibration(event) {
+    if (document.body.classList.contains('vibration-active')) return;
+    document.body.classList.add('vibration-active');
+    
+    // Origin point for shockwave (mouse click)
+    let x = event.clientX;
+    let y = event.clientY;
+
+    const wave = document.createElement('div');
+    wave.className = 'shockwave';
+    wave.style.left = `${x}px`;
+    wave.style.top = `${y}px`;
+    document.body.appendChild(wave);
+
+    setTimeout(() => {
+        document.body.classList.remove('vibration-active');
+        wave.remove();
+    }, 800);
+}

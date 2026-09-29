@@ -180,3 +180,57 @@ header { display: flex; justify-content: space-between; align-items: center; pad
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: #333; }
 ::-webkit-scrollbar-thumb:hover { background: var(--text-bright); }
+
+/* =========================================================================
+   THE NTLAP 0.000001% VECTOR INTERACTIONS
+   ========================================================================= */
+
+/* ENERGY: Power Surge Glitch */
+#energy-surge {
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+    background: #fff; mix-blend-mode: difference; z-index: 100000;
+    pointer-events: none; display: none;
+}
+.surge-active #energy-surge { display: block; animation: surge-flash 0.4s steps(5) forwards; }
+.surge-active .content, .surge-active footer { animation: surge-glitch 0.4s steps(5); }
+
+@keyframes surge-flash {
+    0% { opacity: 0; } 20% { opacity: 1; background: #ff003c; } 40% { opacity: 0; } 
+    60% { opacity: 1; background: #00ffff; } 100% { opacity: 0; }
+}
+@keyframes surge-glitch {
+    0% { transform: translate(0, 0) skewX(0); filter: drop-shadow(0 0 0 rgba(0,0,0,0)); }
+    20% { transform: translate(-20px, 10px) skewX(10deg); filter: drop-shadow(10px 0 0 red); }
+    40% { transform: translate(20px, -10px) skewX(-10deg); filter: drop-shadow(-10px 0 0 cyan); }
+    60% { transform: translate(10px, 10px) skewX(5deg); filter: invert(1); }
+    100% { transform: translate(0, 0) skewX(0); filter: drop-shadow(0 0 0 rgba(0,0,0,0)); }
+}
+
+/* FREQUENCY: Radar Sweep */
+#freq-sweep {
+    position: fixed; top: -20vh; left: 0; width: 100vw; height: 20vh;
+    background: linear-gradient(to bottom, transparent, rgba(0, 255, 204, 0.2), #00ffcc);
+    box-shadow: 0 10px 30px #00ffcc;
+    mix-blend-mode: screen; pointer-events: none; z-index: 99999; display: none;
+}
+.sweep-active #freq-sweep { display: block; animation: radar-sweep 1s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+.sweep-active .crt-screen { animation: crt-flash 1s ease-out; }
+@keyframes radar-sweep { 0% { top: -20vh; opacity: 1; } 100% { top: 100vh; opacity: 0; } }
+
+/* VIBRATION: Kinetic Shockwave */
+.vibration-active .content, .vibration-active footer { animation: violent-shake 0.5s cubic-bezier(.36,.07,.19,.97) both; }
+@keyframes violent-shake {
+    0%, 100% { transform: translate3d(0, 0, 0); filter: blur(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translate3d(-15px, 5px, 0); filter: blur(2px); }
+    20%, 40%, 60%, 80% { transform: translate3d(15px, -5px, 0); filter: blur(4px); }
+}
+.shockwave {
+    position: fixed; transform: translate(-50%, -50%);
+    border: 4px solid var(--text-bright); border-radius: 50%;
+    pointer-events: none; z-index: 100000;
+    animation: shockwave-pulse 0.8s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+}
+@keyframes shockwave-pulse {
+    0% { width: 0; height: 0; opacity: 1; border-width: 20px; box-shadow: 0 0 40px var(--text-bright); }
+    100% { width: 150vw; height: 150vw; opacity: 0; border-width: 1px; box-shadow: 0 0 0 var(--text-bright); }
+}

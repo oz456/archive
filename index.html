@@ -109,23 +109,27 @@
         </div>
     </div>
 
+    <!-- Interactive Overlays -->
+    <div id="freq-sweep"></div>
+    <div id="energy-surge"></div>
+
     <!-- The Minimal Vector Footer -->
     <footer id="vector-footer" class="reveal">
         <div class="vector-grid">
-            <div class="vector-item delay-1">
+            <div class="vector-item delay-1" onclick="triggerEnergy()">
                 <svg viewBox="0 0 100 100" class="crt-svg">
                     <polygon points="50,10 20,55 45,55 45,90 80,45 55,45" fill="none" stroke="currentColor" stroke-width="4"/>
                 </svg>
                 <div class="vector-label">ENERGY</div>
             </div>
-            <div class="vector-item delay-2">
+            <div class="vector-item delay-2" onclick="triggerFrequency()">
                 <svg viewBox="0 0 100 100" class="crt-svg">
                     <path d="M 10,50 Q 30,10 50,50 T 90,50" fill="none" stroke="currentColor" stroke-width="4"/>
                     <line x1="10" y1="50" x2="90" y2="50" stroke="currentColor" stroke-width="1" opacity="0.5" stroke-dasharray="2 2"/>
                 </svg>
                 <div class="vector-label">FREQUENCY</div>
             </div>
-            <div class="vector-item delay-3">
+            <div class="vector-item delay-3" onclick="triggerVibration(event)">
                 <svg viewBox="0 0 100 100" class="crt-svg">
                     <circle cx="50" cy="50" r="15" fill="none" stroke="currentColor" stroke-width="2"/>
                     <circle cx="50" cy="50" r="30" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="5 5"/>
