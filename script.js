@@ -61,8 +61,8 @@ function initPhysicsFooter() {
     const runner = Runner.create();
     Runner.run(runner, engine);
 
-    // Monochromatic aesthetic palette (Light theme)
-    const colors = ['#e0e0e0', '#f4f4f4', '#ffffff', '#111111'];
+    // Monochromatic aesthetic palette (OLED High Contrast)
+    const colors = ['#111111', '#1a1a1a', '#2a2a2a', '#ffffff'];
 
     const wallOptions = { 
         isStatic: true, 
@@ -78,16 +78,16 @@ function initPhysicsFooter() {
     function createPart(x, y) {
         const type = Math.floor(Math.random() * 4);
         const color = colors[Math.floor(Math.random() * colors.length)];
-        const isDark = color === '#111111';
+        const isBright = color === '#ffffff';
         
         const commonOptions = {
             restitution: 0.6,
             friction: 0.1,
             density: 0.05,
             render: { 
-                fillStyle: isDark ? 'transparent' : color, 
-                strokeStyle: isDark ? '#111111' : 'rgba(0,0,0,0.1)', 
-                lineWidth: 1 
+                fillStyle: isBright ? 'transparent' : color, 
+                strokeStyle: isBright ? '#ffffff' : '#444444', 
+                lineWidth: isBright ? 2 : 1 
             }
         };
 
