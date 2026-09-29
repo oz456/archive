@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NIGHTWEB // ARCHIVE</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+</head>
+<body>
+    <div class="noise-overlay"></div>
+    <div class="grid-overlay"></div>
+    
+    <main class="content">
+        <header>
+            <div class="logo">NIGHTWEB // <span class="blink">_</span></div>
+            <nav>
+                <a href="#learnings">Learnings</a>
+                <a href="#artifacts">Artifacts</a>
+            </nav>
+        </header>
+
+        <section class="hero">
+            <h1 class="monolith">ARCHIVE.</h1>
+            <p class="manifesto">A repository of obsessions. Custom electronics, low-level architecture, and kinetic mechanisms. <br><br>This is a ledger of experiments, not a portfolio. Observe if you wish.</p>
+        </section>
+
+        <section id="learnings" class="informative-section">
+            <div class="section-header">
+                <h2>// 01. RESEARCH_LOGS</h2>
+            </div>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>MECHANICS</h3>
+                    <p>Physical linkages, CAD topography, and digital fabrication tolerances. Studying the kinetic transfer of power.</p>
+                </div>
+                <div class="info-card">
+                    <h3>ELECTRONICS</h3>
+                    <p>PCB topography, embedded microcontrollers, and hardware-software interfacing. The nervous system of the machine.</p>
+                </div>
+                <div class="info-card">
+                    <h3>FIRMWARE</h3>
+                    <p>C, C++, and RTOS. Dictating the logic that bends silicon and steel to will.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="artifacts" class="informative-section">
+            <div class="section-header">
+                <h2>// 02. ARTIFACTS</h2>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card" onclick="openModal('assets/cyberdeck.mp4')">
+                    <div class="project-media">
+                        <img src="assets/cyberdeck.jpeg" alt="Cyberdeck Archive">
+                        <div class="media-overlay"><span>[ INITIALIZE LOG ]</span></div>
+                    </div>
+                    <div class="project-details">
+                        <h3>CYBERDECK_01</h3>
+                        <p>Custom portable computing rig. Retro-futuristic aesthetics mapped to ruggedized hardware.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-media placeholder"></div>
+                    <div class="project-details">
+                        <h3>EDC_MACHINE</h3>
+                        <p>Minimal phone engineered from scratch. Bespoke kernel, tailored OS architecture, and bare-metal electronics.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Video Modal -->
+    <div id="video-modal" class="modal hidden">
+        <div class="modal-bg" onclick="closeModal()"></div>
+        <div class="modal-content">
+            <div class="modal-close" onclick="closeModal()">[X] CLOSE</div>
+            <video id="modal-video" src="" controls playsinline></video>
+        </div>
+    </div>
+
+    <footer id="interactive-footer">
+        <div class="footer-content">
+            <h2>// THE LAB</h2>
+            <p>Interactive Sandbox</p>
+        </div>
+        <div id="canvas-container"></div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
