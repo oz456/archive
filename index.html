@@ -3,96 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ARCHIVE // LOGS</title>
+    <title>A R C H I V E</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;300;400;700;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Koulen&family=Unbounded:wght@300;700;900&family=Roboto+Mono:wght@300;500&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- CRT TV / Blurish Dotish Overlay -->
+    <div class="crt-screen"></div>
+    <div class="scanlines"></div>
+    <div class="crt-vignette"></div>
+
     <div class="cursor-dot" id="cursor-dot"></div>
-    <div class="cursor-outline" id="cursor-outline"></div>
-    
-    <div class="grid-overlay"></div>
-    <div class="ambient-glow"></div>
     
     <main class="content">
         <header class="reveal">
-            <div class="logo">MK_01 <span class="accent">/ ARCHIVE</span></div>
-            <nav>
-                <a href="#systems">Systems</a>
-                <a href="#artifacts">Artifacts</a>
-            </nav>
+            <div class="logo glitch" data-text="MK_01">MK_01</div>
+            <div class="status-indicator">
+                <div class="recording-dot"></div>
+                <span>REC // SYSTEM ACTIVE</span>
+            </div>
         </header>
 
         <section class="hero reveal delay-1">
-            <h1 class="monolith" data-text="ARCHIVE">ARCHIVE</h1>
-            <div class="telemetry">
-                <span class="pulse-dot"></span> SYSTEM NOMINAL // HARDWARE. SOFTWARE. KINETICS.
-            </div>
+            <h1 class="monolith glitch-text" data-text="ARCHIVE">ARCHIVE</h1>
+            <p class="manifesto">Hardware. Software. Kinetics.</p>
         </section>
 
         <section id="systems" class="informative-section">
             <div class="section-header reveal">
-                <h2>// 01. DOMAINS</h2>
+                <h2>[ 01. CORE_SYSTEMS ]</h2>
             </div>
             <div class="info-grid">
                 <div class="info-card reveal delay-1">
                     <h3>MECHANICS</h3>
-                    <p>Physical linkages, precision CAD topography, and the violent kinetic transfer of power.</p>
+                    <p>Physical linkages and precision topography. The violent kinetic transfer of power.</p>
                 </div>
                 <div class="info-card reveal delay-2">
                     <h3>ELECTRONICS</h3>
-                    <p>PCB architecture and embedded microcontrollers. The central nervous system of the machine.</p>
+                    <p>Embedded architecture and PCB design. The central nervous system of the machine.</p>
                 </div>
                 <div class="info-card reveal delay-3">
                     <h3>SOFTWARE</h3>
-                    <p>C, C++, and bare-metal logic. Writing the rules that bend silicon and steel to will.</p>
+                    <p>C, C++, and bare-metal logic. Writing the rules that bend silicon to will.</p>
                 </div>
             </div>
         </section>
 
         <section id="artifacts" class="informative-section">
             <div class="section-header reveal">
-                <h2>// 02. ARTIFACTS</h2>
+                <h2>[ 02. ARTIFACTS ]</h2>
             </div>
             <div class="projects-grid">
+                <!-- Cyberdeck Project -->
                 <div class="project-card reveal" onclick="openModal('OnePeiceCyberDeck(GOAT).mp4')">
-                    <div class="project-media">
-                        <img src="assets/cyberdeck.jpeg" alt="Cyberdeck Archive">
-                        <div class="media-overlay"><span>[ INITIALIZE LOG ]</span></div>
+                    <div class="tv-frame">
+                        <div class="project-media">
+                            <img src="assets/cyberdeck.jpeg" alt="Cyberdeck">
+                            <div class="media-overlay"><span>[ INITIALIZE ]</span></div>
+                        </div>
                     </div>
                     <div class="project-details">
                         <h3>CYBERDECK_01</h3>
-                        <p>Custom portable computing rig. Retro-futuristic aesthetics mapped to ruggedized hardware.</p>
+                        <p>Custom computing rig. Retro-futuristic hardware meets terminal architecture.</p>
                     </div>
                 </div>
+
+                <!-- EDC Machine Project -->
                 <div class="project-card reveal">
-                    <div class="project-media placeholder">
-                        <div class="scanning-line"></div>
+                    <div class="tv-frame">
+                        <div class="project-media placeholder">
+                            <canvas id="noise-canvas-1"></canvas>
+                            <div class="placeholder-text">SIGNAL LOST</div>
+                        </div>
                     </div>
                     <div class="project-details">
                         <h3>EDC_MACHINE</h3>
-                        <p>Minimal phone engineered from scratch. Bespoke kernel, tailored OS architecture, and bare-metal electronics.</p>
+                        <p>Minimal phone engineered from scratch. Bespoke kernel, custom OS, bare-metal.</p>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
+    <!-- Modal with Blur Background -->
     <div id="video-modal" class="modal hidden">
         <div class="modal-bg" onclick="closeModal()"></div>
         <div class="modal-content">
-            <div class="modal-close" onclick="closeModal()">[X] CLOSE</div>
-            <video id="modal-video" src="" controls playsinline></video>
+            <div class="modal-close" onclick="closeModal()">[X] ABORT</div>
+            <div class="crt-video-frame">
+                <video id="modal-video" src="" controls playsinline></video>
+                <div class="modal-scanlines"></div>
+            </div>
         </div>
     </div>
 
+    <!-- Footer synchronized with the body -->
     <footer id="interactive-footer" class="reveal">
+        <!-- Dynamic Canvas for blurry dotish TV effect -->
+        <canvas id="footer-noise"></canvas>
         <div class="footer-content">
-            <h2>THE LAB</h2>
-            <p>KINETIC SANDBOX. SPAWN COMPONENTS.</p>
+            <h2 class="glitch-text" data-text="THE_LAB">THE_LAB</h2>
+            <p>END OF TRANSMISSION</p>
         </div>
-        <div id="canvas-container"></div>
     </footer>
 
     <script src="script.js"></script>
