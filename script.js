@@ -32,7 +32,7 @@ function initCustomCursor() {
         dot.style.boxShadow = '0 0 10px var(--text-bright)';
     });
 
-    const clickables = document.querySelectorAll('a, .project-card, .modal-close');
+    const clickables = document.querySelectorAll('a, .project-card, .modal-close, .equip-item');
     clickables.forEach(el => {
         el.addEventListener('mouseenter', () => {
             dot.style.transform = 'translate(-50%, -50%) scale(3)';
