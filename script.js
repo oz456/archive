@@ -1,6 +1,85 @@
 document.addEventListener("DOMContentLoaded", () => {
     initPhysicsFooter();
+    initScrollAnimations();
+    initCustomCursor();
 });
+
+// Custom Cursor Logic
+function initCustomCursor() {
+    const dot = document.getElementById('cursor-dot');
+    const outline = document.getElementById('cursor-outline');
+    
+    // Check if device supports hover (ignore on mobile)
+    if (window.matchMedia("(hover: none)").matches) {
+        dot.style.display = 'none';
+        outline.style.display = 'none';
+        document.body.style.cursor = 'auto';
+        return;
+    }
+
+    window.addEventListener('mousemove', (e) => {
+        dot.style.left = `${e.clientX}px`;
+        dot.style.top = `${e.clientY}px`;
+        
+        // Slight delay on the outline for that smooth, magnetic feel
+        setTimeout(() => {
+            outline.style.left = `${e.clientX}px`;
+            outline.style.top = `${e.clientY}px`;
+        }, 50);
+    });
+
+    document.addEventListener('mousedown', () => {
+        outline.style.transform = 'translate(-50%, -50%) scale(0.7)';
+        dot.style.transform = 'translate(-50%, -50%) scale(1.5)';
+    });
+    
+    document.addEventListener('mouseup', () => {
+        outline.style.transform = 'translate(-50%, -50%) scale(1)';
+        dot.style.transform = 'translate(-50%, -50%) scale(1)';
+    });
+
+    // Hover states for interactables
+    const clickables = document.querySelectorAll('a, .project-card, .modal-close');
+    clickables.forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            outline.style.width = '60px';
+            outline.style.height = '60px';
+            outline.style.backgroundColor = 'rgba(255,51,0,0.1)';
+            dot.style.opacity = '0';
+        });
+        el.addEventListener('mouseleave', () => {
+            outline.style.width = '40px';
+            outline.style.height = '40px';
+            outline.style.backgroundColor = 'transparent';
+            dot.style.opacity = '1';
+        });
+    });
+}
+
+// Scroll Reveal Animations
+function initScrollAnimations() {
+    const reveals = document.querySelectorAll('.reveal');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    reveals.forEach(reveal => observer.observe(reveal));
+    
+    // Trigger immediately for items in viewport on load
+    setTimeout(() => {
+        reveals.forEach(reveal => {
+            const rect = reveal.getBoundingClientRect();
+            if(rect.top < window.innerHeight) {
+                reveal.classList.add('active');
+            }
+        });
+    }, 100);
+}
 
 // Modal Logic
 function openModal(videoSrc) {
@@ -19,11 +98,8 @@ function closeModal() {
     video.src = '';
 }
 
-// Close modal on escape key
 document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-        closeModal();
-    }
+    if (e.key === 'Escape') closeModal();
 });
 
 // Physics Sandbox Logic
@@ -52,7 +128,6 @@ function initPhysicsFooter() {
             height: height,
             background: 'transparent',
             wireframes: false,
-            showAngleIndicator: false,
             pixelRatio: window.devicePixelRatio
         }
     });
@@ -61,13 +136,10 @@ function initPhysicsFooter() {
     const runner = Runner.create();
     Runner.run(runner, engine);
 
-    // Monochromatic aesthetic palette (OLED High Contrast)
-    const colors = ['#111111', '#1a1a1a', '#2a2a2a', '#ffffff'];
+    // Deep Dark + Toxic Orange palette
+    const colors = ['#0a0a0a', '#111111', '#1a1a1a', '#ff3300'];
 
-    const wallOptions = { 
-        isStatic: true, 
-        render: { fillStyle: 'transparent' } 
-    };
+    const wallOptions = { isStatic: true, render: { fillStyle: 'transparent' } };
 
     let ground = Bodies.rectangle(width / 2, height + 25, width * 2, 50, wallOptions);
     let leftWall = Bodies.rectangle(-25, height / 2, 50, height * 2, wallOptions);
@@ -78,16 +150,16 @@ function initPhysicsFooter() {
     function createPart(x, y) {
         const type = Math.floor(Math.random() * 4);
         const color = colors[Math.floor(Math.random() * colors.length)];
-        const isBright = color === '#ffffff';
+        const isAccent = color === '#ff3300';
         
         const commonOptions = {
-            restitution: 0.6,
+            restitution: 0.5,
             friction: 0.1,
-            density: 0.05,
+            density: isAccent ? 0.08 : 0.05, // Accent pieces feel heavier
             render: { 
-                fillStyle: isBright ? 'transparent' : color, 
-                strokeStyle: isBright ? '#ffffff' : '#444444', 
-                lineWidth: isBright ? 2 : 1 
+                fillStyle: isAccent ? 'transparent' : color, 
+                strokeStyle: isAccent ? '#ff3300' : '#222222', 
+                lineWidth: isAccent ? 2 : 1 
             }
         };
 
@@ -95,39 +167,24 @@ function initPhysicsFooter() {
         const scale = (Math.random() * 0.5) + 0.8;
 
         switch(type) {
-            case 0: // Gear/Wheel
-                body = Bodies.circle(x, y, 25 * scale, commonOptions);
-                break;
-            case 1: // Microchip/Block
-                body = Bodies.rectangle(x, y, 50 * scale, 40 * scale, commonOptions);
-                break;
-            case 2: // Structural Beam
-                body = Bodies.rectangle(x, y, 90 * scale, 15 * scale, commonOptions);
-                break;
-            case 3: // Nut/Hex
-                body = Bodies.polygon(x, y, 6, 20 * scale, commonOptions);
-                break;
+            case 0: body = Bodies.circle(x, y, 25 * scale, commonOptions); break;
+            case 1: body = Bodies.rectangle(x, y, 50 * scale, 40 * scale, commonOptions); break;
+            case 2: body = Bodies.rectangle(x, y, 90 * scale, 15 * scale, commonOptions); break;
+            case 3: body = Bodies.polygon(x, y, 6, 20 * scale, commonOptions); break;
         }
         return body;
     }
 
-    // Add initial falling parts sparsely
     const parts = [];
-    for (let i = 0; i < 20; i++) {
-        parts.push(createPart(
-            (Math.random() * (width - 100)) + 50, 
-            -Math.random() * 1000 - 100
-        ));
+    for (let i = 0; i < 25; i++) {
+        parts.push(createPart((Math.random() * (width - 100)) + 50, -Math.random() * 1000 - 100));
     }
     Composite.add(world, parts);
 
     const mouse = Mouse.create(render.canvas);
     const mouseConstraint = MouseConstraint.create(engine, {
         mouse: mouse,
-        constraint: {
-            stiffness: 0.2,
-            render: { visible: false }
-        }
+        constraint: { stiffness: 0.2, render: { visible: false } }
     });
 
     Composite.add(world, mouseConstraint);
@@ -149,8 +206,7 @@ function initPhysicsFooter() {
         const mousePosition = event.mouse.position;
         const bodiesUnderMouse = Matter.Query.point(world.bodies, mousePosition);
         if (bodiesUnderMouse.length === 0) {
-            const newPart = createPart(mousePosition.x, mousePosition.y);
-            Composite.add(world, newPart);
+            Composite.add(world, createPart(mousePosition.x, mousePosition.y));
         }
     });
 }

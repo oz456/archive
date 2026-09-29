@@ -3,55 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ARCHIVE // INDEX</title>
+    <title>ARCHIVE // LOGS</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;300;400;700;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
 </head>
 <body>
-    <div class="noise-overlay"></div>
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-outline" id="cursor-outline"></div>
+    
     <div class="grid-overlay"></div>
+    <div class="ambient-glow"></div>
     
     <main class="content">
-        <header>
-            <div class="logo">ARCHIVE // <span class="blink">_</span></div>
+        <header class="reveal">
+            <div class="logo">MK_01 <span class="accent">/ ARCHIVE</span></div>
             <nav>
-                <a href="#learnings">Learnings</a>
+                <a href="#systems">Systems</a>
                 <a href="#artifacts">Artifacts</a>
             </nav>
         </header>
 
-        <section class="hero">
-            <h1 class="monolith">ARCHIVE</h1>
-            <p class="manifesto">Hardware. Software. Mechanics.</p>
+        <section class="hero reveal delay-1">
+            <h1 class="monolith" data-text="ARCHIVE">ARCHIVE</h1>
+            <div class="telemetry">
+                <span class="pulse-dot"></span> SYSTEM NOMINAL // HARDWARE. SOFTWARE. KINETICS.
+            </div>
         </section>
 
-        <section id="learnings" class="informative-section">
-            <div class="section-header">
-                <h2>// 01. SYSTEMS</h2>
+        <section id="systems" class="informative-section">
+            <div class="section-header reveal">
+                <h2>// 01. DOMAINS</h2>
             </div>
             <div class="info-grid">
-                <div class="info-card">
+                <div class="info-card reveal delay-1">
                     <h3>MECHANICS</h3>
-                    <p>Physical linkages, CAD topography, and digital fabrication tolerances. Studying the kinetic transfer of power.</p>
+                    <p>Physical linkages, precision CAD topography, and the violent kinetic transfer of power.</p>
                 </div>
-                <div class="info-card">
+                <div class="info-card reveal delay-2">
                     <h3>ELECTRONICS</h3>
-                    <p>PCB topography, embedded microcontrollers, and hardware-software interfacing. The nervous system of the machine.</p>
+                    <p>PCB architecture and embedded microcontrollers. The central nervous system of the machine.</p>
                 </div>
-                <div class="info-card">
+                <div class="info-card reveal delay-3">
                     <h3>SOFTWARE</h3>
-                    <p>C, C++, and bare-metal programming. Writing the logic that dictates behavior and bends silicon to will.</p>
+                    <p>C, C++, and bare-metal logic. Writing the rules that bend silicon and steel to will.</p>
                 </div>
             </div>
         </section>
 
         <section id="artifacts" class="informative-section">
-            <div class="section-header">
+            <div class="section-header reveal">
                 <h2>// 02. ARTIFACTS</h2>
             </div>
             <div class="projects-grid">
-                <div class="project-card" onclick="openModal('OnePeiceCyberDeck(GOAT).mp4')">
+                <div class="project-card reveal" onclick="openModal('OnePeiceCyberDeck(GOAT).mp4')">
                     <div class="project-media">
                         <img src="assets/cyberdeck.jpeg" alt="Cyberdeck Archive">
                         <div class="media-overlay"><span>[ INITIALIZE LOG ]</span></div>
@@ -61,8 +66,10 @@
                         <p>Custom portable computing rig. Retro-futuristic aesthetics mapped to ruggedized hardware.</p>
                     </div>
                 </div>
-                <div class="project-card">
-                    <div class="project-media placeholder"></div>
+                <div class="project-card reveal">
+                    <div class="project-media placeholder">
+                        <div class="scanning-line"></div>
+                    </div>
                     <div class="project-details">
                         <h3>EDC_MACHINE</h3>
                         <p>Minimal phone engineered from scratch. Bespoke kernel, tailored OS architecture, and bare-metal electronics.</p>
@@ -72,7 +79,6 @@
         </section>
     </main>
 
-    <!-- Video Modal -->
     <div id="video-modal" class="modal hidden">
         <div class="modal-bg" onclick="closeModal()"></div>
         <div class="modal-content">
@@ -81,10 +87,10 @@
         </div>
     </div>
 
-    <footer id="interactive-footer">
+    <footer id="interactive-footer" class="reveal">
         <div class="footer-content">
-            <h2>// THE LAB</h2>
-            <p>Interactive Sandbox</p>
+            <h2>THE LAB</h2>
+            <p>KINETIC SANDBOX. SPAWN COMPONENTS.</p>
         </div>
         <div id="canvas-container"></div>
     </footer>
