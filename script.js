@@ -215,3 +215,13 @@ function triggerVibration(event) {
         wave.remove();
     }, 800);
 }
+
+// Hardware Scroller Logic
+function scrollCore(direction) {
+    const grid = document.getElementById('core-grid');
+    if (!grid) return;
+    
+    // Width of one card + gap
+    const scrollAmount = 300 + 32; 
+    grid.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+}

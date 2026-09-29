@@ -102,9 +102,23 @@ header { display: flex; justify-content: space-between; align-items: center; pad
 .informative-section { padding: 6rem 0; border-top: 1px dashed rgba(255,255,255,0.1); }
 .section-header { margin-bottom: 3rem; }
 .section-header h2 { font-family: 'Unbounded', sans-serif; font-size: 0.9rem; letter-spacing: 4px; color: var(--text-main); font-weight: 300; }
+/* Hardware Scroll Controls */
+.hardware-controls { display: flex; gap: 1rem; font-family: 'VT323', monospace; font-size: 1.5rem; color: var(--text-muted); }
+.hardware-controls span { cursor: pointer; transition: color 0.3s, text-shadow 0.3s; padding: 0 0.5rem; }
+.hardware-controls span:hover { color: var(--accent); text-shadow: 0 0 10px var(--accent); }
 
-.info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 3rem; }
-.info-card { padding: 2rem; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); transition: background 0.3s, border 0.3s; backdrop-filter: blur(5px); }
+/* Horizontal Scroller */
+.info-grid { 
+    display: flex; flex-wrap: nowrap; overflow-x: auto; gap: 2rem; padding-bottom: 2rem; 
+    scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: thin; 
+    scrollbar-color: var(--text-muted) rgba(255,255,255,0.05); 
+}
+.info-grid::-webkit-scrollbar { height: 4px; }
+.info-grid::-webkit-scrollbar-track { background: rgba(255,255,255,0.02); }
+.info-grid::-webkit-scrollbar-thumb { background: var(--text-muted); transition: background 0.3s; }
+.info-grid:hover::-webkit-scrollbar-thumb { background: var(--accent); }
+
+.info-card { flex: 1 0 300px; max-width: 400px; scroll-snap-align: start; padding: 2rem; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); transition: background 0.3s, border 0.3s; backdrop-filter: blur(5px); }
 .info-card:hover { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.2); }
 .info-card h3 { font-family: 'Unbounded', sans-serif; font-size: 1rem; margin-bottom: 1rem; letter-spacing: 2px; color: var(--text-bright); font-weight: 700; }
 .info-card p { font-size: 0.85rem; line-height: 1.8; color: var(--text-muted); }
@@ -248,7 +262,7 @@ header { display: flex; justify-content: space-between; align-items: center; pad
     .manifesto { font-size: 0.8rem; letter-spacing: 2px; }
     
     /* Grids & Cards */
-    .info-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+    .info-card { flex: 0 0 85vw; max-width: none; }
     .informative-section { padding: 4rem 0; }
     .projects-grid { gap: 3rem; }
     

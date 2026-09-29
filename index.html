@@ -38,10 +38,14 @@
         </section>
 
         <section id="systems" class="informative-section">
-            <div class="section-header reveal">
+            <div class="section-header reveal" style="display: flex; justify-content: space-between; align-items: center;">
                 <h2>[ 01. CORE_SYSTEMS ]</h2>
+                <div class="hardware-controls">
+                    <span onclick="scrollCore(-1)">[ &lt; ]</span>
+                    <span onclick="scrollCore(1)">[ &gt; ]</span>
+                </div>
             </div>
-            <div class="info-grid">
+            <div class="info-grid" id="core-grid">
                 <div class="info-card reveal delay-1">
                     <h3>MECHANICS</h3>
                     <p>Physical linkages and precision topography. The violent kinetic transfer of power.</p>
