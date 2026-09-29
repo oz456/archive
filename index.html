@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Koulen&family=Unbounded:wght@300;700;900&family=Roboto+Mono:wght@300;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- CRT TV / Blurish Dotish Overlay -->
@@ -22,13 +22,13 @@
             <div class="logo glitch" data-text="MK_01">MK_01</div>
             <div class="status-indicator">
                 <div class="recording-dot"></div>
-                <span>REC // SYSTEM ACTIVE</span>
+                <span>V-TRACKING // SYNCED</span>
             </div>
         </header>
 
         <section class="hero reveal delay-1">
-            <h1 class="monolith glitch-text" data-text="ARCHIVE">ARCHIVE</h1>
-            <p class="manifesto">Energy. Frequency. Vibration.</p>
+            <h1 class="monolith vcr-text glitch-text" data-text="ARCHIVE">ARCHIVE</h1>
+            <p class="manifesto">ENERGY // FREQUENCY // VIBRATION</p>
         </section>
 
         <section id="systems" class="informative-section">
@@ -61,7 +61,9 @@
                     <div class="tv-frame">
                         <div class="project-media">
                             <img src="assets/cyberdeck.jpeg" alt="Cyberdeck">
-                            <div class="media-overlay"><span>[ INITIALIZE ]</span></div>
+                            <div class="vcr-osd">
+                                <span class="vcr-play">► PLAY</span>
+                            </div>
                         </div>
                     </div>
                     <div class="project-details">
@@ -75,7 +77,10 @@
                     <div class="tv-frame">
                         <div class="project-media placeholder">
                             <canvas id="noise-canvas-1"></canvas>
-                            <div class="placeholder-text">WORK IN PROGRESS</div>
+                            <div class="vcr-osd">
+                                <span class="vcr-rec">● REC</span>
+                                <span class="vcr-text">WORK_IN_PROGRESS // T-0:00:00</span>
+                            </div>
                         </div>
                     </div>
                     <div class="project-details">
@@ -91,7 +96,7 @@
     <div id="video-modal" class="modal hidden">
         <div class="modal-bg" onclick="closeModal()"></div>
         <div class="modal-content">
-            <div class="modal-close" onclick="closeModal()">[X] ABORT</div>
+            <div class="modal-close" onclick="closeModal()">[X] EJECT</div>
             <div class="crt-video-frame">
                 <video id="modal-video" src="" controls playsinline></video>
                 <div class="modal-scanlines"></div>
@@ -99,8 +104,32 @@
         </div>
     </div>
 
-    <!-- The 0.000001% Footer - A pure invisible void with physical interaction -->
-    <div id="zen-garden" class="reveal"></div>
+    <!-- The Minimal Vector Footer -->
+    <footer id="vector-footer" class="reveal">
+        <div class="vector-grid">
+            <div class="vector-item delay-1">
+                <svg viewBox="0 0 100 100" class="crt-svg">
+                    <polygon points="50,10 20,55 45,55 45,90 80,45 55,45" fill="none" stroke="currentColor" stroke-width="4"/>
+                </svg>
+                <div class="vector-label">ENERGY</div>
+            </div>
+            <div class="vector-item delay-2">
+                <svg viewBox="0 0 100 100" class="crt-svg">
+                    <path d="M 10,50 Q 30,10 50,50 T 90,50" fill="none" stroke="currentColor" stroke-width="4"/>
+                    <line x1="10" y1="50" x2="90" y2="50" stroke="currentColor" stroke-width="1" opacity="0.5" stroke-dasharray="2 2"/>
+                </svg>
+                <div class="vector-label">FREQUENCY</div>
+            </div>
+            <div class="vector-item delay-3">
+                <svg viewBox="0 0 100 100" class="crt-svg">
+                    <circle cx="50" cy="50" r="15" fill="none" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="50" cy="50" r="30" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="5 5"/>
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="10 10"/>
+                </svg>
+                <div class="vector-label">VIBRATION</div>
+            </div>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>

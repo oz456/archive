@@ -2,7 +2,6 @@ document.addEventListener("DOMContentLoaded", () => {
     initScrollAnimations();
     initCustomCursor();
     initTVNoise('noise-canvas-1', 0.1); // Subtle noise for placeholder
-    initZenGarden(); // The 0.000001% footer
 });
 
 // Custom Cursor Logic
@@ -153,86 +152,4 @@ function initTVNoise(canvasId, intensity = 0.2) {
     loop();
 }
 
-// The 0.000001% Zen Garden
-function initZenGarden() {
-    const container = document.getElementById('zen-garden');
-    if (!container) return;
 
-    const Engine = Matter.Engine,
-          Render = Matter.Render,
-          Runner = Matter.Runner,
-          MouseConstraint = Matter.MouseConstraint,
-          Mouse = Matter.Mouse,
-          World = Matter.World,
-          Bodies = Matter.Bodies;
-
-    const engine = Engine.create();
-    
-    let width = container.clientWidth;
-    let height = container.clientHeight;
-
-    const render = Render.create({
-        element: container,
-        engine: engine,
-        options: {
-            width: width,
-            height: height,
-            background: 'transparent',
-            wireframes: false,
-            pixelRatio: window.devicePixelRatio
-        }
-    });
-
-    // The physical representations of Energy, Frequency, Vibration
-    const common = { restitution: 0.9, frictionAir: 0.01, density: 0.01 };
-    
-    // Energy (Red Circle)
-    const energy = Bodies.circle(width / 2 - 60, height / 2, 25, {
-        ...common,
-        render: { fillStyle: '#ff003c' }
-    });
-
-    // Frequency (White Triangle)
-    const frequency = Bodies.polygon(width / 2, height / 2 - 50, 3, 30, {
-        ...common,
-        render: { fillStyle: '#ffffff' }
-    });
-
-    // Vibration (Outline Square)
-    const vibration = Bodies.rectangle(width / 2 + 60, height / 2, 45, 45, {
-        ...common,
-        render: { fillStyle: 'transparent', strokeStyle: '#555555', lineWidth: 4 }
-    });
-
-    const ground = Bodies.rectangle(width / 2, height + 25, width, 50, { isStatic: true, render: { visible: false } });
-    const leftWall = Bodies.rectangle(-25, height / 2, 50, height, { isStatic: true, render: { visible: false } });
-    const rightWall = Bodies.rectangle(width + 25, height / 2, 50, height, { isStatic: true, render: { visible: false } });
-
-    World.add(engine.world, [energy, frequency, vibration, ground, leftWall, rightWall]);
-
-    const mouse = Mouse.create(render.canvas);
-    const mouseConstraint = MouseConstraint.create(engine, {
-        mouse: mouse,
-        constraint: { stiffness: 0.2, render: { visible: false } }
-    });
-
-    World.add(engine.world, mouseConstraint);
-    render.mouse = mouse;
-
-    // Fix scrolling interference
-    mouseConstraint.mouse.element.removeEventListener("mousewheel", mouseConstraint.mouse.mousewheel);
-    mouseConstraint.mouse.element.removeEventListener("DOMMouseScroll", mouseConstraint.mouse.mousewheel);
-
-    Render.run(render);
-    const runner = Runner.create();
-    Runner.run(runner, engine);
-
-    window.addEventListener('resize', () => {
-        width = container.clientWidth;
-        height = container.clientHeight;
-        render.canvas.width = width;
-        render.canvas.height = height;
-        Matter.Body.setPosition(ground, { x: width / 2, y: height + 25 });
-        Matter.Body.setPosition(rightWall, { x: width + 25, y: height / 2 });
-    });
-}
